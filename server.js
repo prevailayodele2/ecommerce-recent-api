@@ -6,6 +6,7 @@ import morgan from "morgan";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
+import cors from 'cors'
 
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
@@ -17,6 +18,7 @@ if (process.env.NODE_ENV === "developement") {
   app.use(morgan("dev"));
 }
 
+app.use(cors())
 app.use(express.json());
 
 app.use("/api/products", productRoutes);
